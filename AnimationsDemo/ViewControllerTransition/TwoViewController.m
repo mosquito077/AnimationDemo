@@ -14,7 +14,7 @@ static CGFloat const kAddButtonWidthAndHeight = 60.f;
 static CGFloat const kCircleRadiusExpand = 100.f;
 
 @interface TwoViewController ()
-<UIViewControllerTransitioningDelegate, CAAnimationDelegate, CircleSpreadTransitionDelegate>
+<UIViewControllerTransitioningDelegate, CircleSpreadTransitionDelegate>
 
 @property (nonatomic, strong) UIButton *numButton;
 @property (nonatomic, strong) UIButton *addButton;
@@ -56,14 +56,16 @@ static CGFloat const kCircleRadiusExpand = 100.f;
 }
 
 - (void)animationStart {
-    CABasicAnimation *positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
-    positionAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.addButton.center.x, self.addButton.center.y)];
-    positionAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(self.view.center.x, self.view.center.y)];
-    positionAnimation.duration = 0.4;
-    positionAnimation.delegate = self;
-    positionAnimation.removedOnCompletion = NO;
-    positionAnimation.fillMode = kCAFillModeForwards;
-    [self.addButton.layer addAnimation:positionAnimation forKey:@"positionAnimation"];
+    POPBasicAnimation *centerAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewCenter];
+    centerAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.addButton.center.x, self.addButton.center.y)];
+    centerAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(self.view.center.x, self.view.center.y)];
+    centerAnimation.duration = 0.4;
+    centerAnimation.removedOnCompletion = NO;
+    [self.addButton pop_addAnimation:centerAnimation forKey:@"centerAnimation"];
+    
+    centerAnimation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    };
 }
 
 - (void)_animationWithButtons {
@@ -116,23 +118,21 @@ static CGFloat const kCircleRadiusExpand = 100.f;
     [self _animationWithButtons];
 }
 
-#pragma mark -- CAAnimationDelegate
-
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-    if (flag) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
-}
-
 #pragma mark -- Getter
 
 - (CGRect)smallFrame {
-    return CGRectMake((kScreenWidth-kAddButtonWidthAndHeight)/2, (kScreenHeight-kAddButtonWidthAndHeight)/2, kAddButtonWidthAndHeight, kAddButtonWidthAndHeight);
+    return CGRectMake((kScreenWidth-kAddButtonWidthAndHeight)/2,
+                      (kScreenHeight-kAddButtonWidthAndHeight)/2,
+                      kAddButtonWidthAndHeight,
+                      kAddButtonWidthAndHeight);
 }
 
 - (CGRect)expandFrame {
     CGFloat radius = kScreenHeight+kCircleRadiusExpand;
-    return CGRectMake(self.view.center.x-radius/2, self.view.center.y-radius/2, radius, radius);
+    return CGRectMake(self.view.center.x-radius/2,
+                      self.view.center.y-radius/2,
+                      radius,
+                      radius);
 }
 
 - (void)didReceiveMemoryWarning {

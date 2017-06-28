@@ -46,12 +46,18 @@
 #pragma mark -- Getter
 
 - (CGRect)startPathFrame {
-    return CGRectMake(_buttonX+(_buttonWidth-_buttonHeight)/2, _buttonY, _buttonHeight, _buttonHeight);
+    return CGRectMake(_buttonX+(_buttonWidth-_buttonHeight)/2,
+                      _buttonY,
+                      _buttonHeight,
+                      _buttonHeight);
 }
 
 - (CGRect)endPathFrame {
     CGFloat radius = sqrt((_buttonX+_buttonWidth/2)*(_buttonX+_buttonWidth/2)+(_buttonY+_buttonHeight/2+20)*(_buttonY+_buttonHeight/2+20));
-    return CGRectMake(_buttonX-(radius-_buttonHeight/2), -(radius-_buttonY), radius*2, radius*2);
+    return CGRectMake(_buttonX-(radius-_buttonHeight/2),
+                      -(radius-_buttonY),
+                      radius*2,
+                      radius*2);
 }
 
 - (void)didReceiveMemoryWarning {

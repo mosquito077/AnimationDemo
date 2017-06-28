@@ -27,8 +27,8 @@
 
 - (instancetype)init;
 
-- (void)loadingAnimate;
-
 - (void)fadeIn;
+
+- (void)loadingAnimate;
 
 @end
