@@ -99,6 +99,7 @@
         case CircleSpreadTransitionTypePresent:{
             id<UIViewControllerContextTransitioning> transitionContext = [anim valueForKey:@"transitionContext"];
             [transitionContext completeTransition:YES];
+            [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey].view.backgroundColor = [UIColor whiteColor];
             if (_delegate && [_delegate respondsToSelector:@selector(presentAnimationDidStop)]) {
                 [_delegate presentAnimationDidStop];
             }
@@ -106,10 +107,11 @@
             break;
         case CircleSpreadTransitionTypeDismiss:{
             id<UIViewControllerContextTransitioning> transitionContext = [anim valueForKey:@"transitionContext"];
-            [transitionContext completeTransition:YES];
-            if (_delegate && [_delegate respondsToSelector:@selector(dismissAnimationDidStop)]) {
-                [_delegate dismissAnimationDidStop];
+            [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+            if ([transitionContext transitionWasCancelled]) {
+                
             }
+            [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey].view.backgroundColor = [UIColor whiteColor];
         }
             break;
     }

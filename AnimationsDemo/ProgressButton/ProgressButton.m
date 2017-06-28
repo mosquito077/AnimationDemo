@@ -80,17 +80,18 @@
     return ceil(MIN(CGRectGetHeight(self.frame), CGRectGetWidth(self.frame)) / 2.0f);
 }
 
-#pragma mark -- rectangleProtocol
+#pragma mark -- RectangleProtocol
 - (void)rectangleAnimationDidStop {
     [self.loadingLayer loadingAnimate];
 }
 
-#pragma mark - loadingCircleProtocol
+#pragma mark - LoadingCircleProtocol
 - (void)loadingAnimationDidStop {
     [self.loadingLayer fadeIn];
+    [self.rectangleLayer animateInitialState];
+    [self.labelLayer fadeOut];
+    
     if (self.progressDelegate && [self.progressDelegate respondsToSelector:@selector(animationDidStop)]) {
-        [self.rectangleLayer animateInitialState];
-        [self.labelLayer fadeOut];
         [self.progressDelegate animationDidStop];
     }
 }

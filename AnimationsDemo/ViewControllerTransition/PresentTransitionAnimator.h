@@ -18,8 +18,6 @@ typedef NS_ENUM(NSUInteger, CircleSpreadTransitionType) {
 
 - (void)presentAnimationDidStop;
 
-- (void)dismissAnimationDidStop;
-
 @end
 
 @interface PresentTransitionAnimator : NSObject<UIViewControllerAnimatedTransitioning, CAAnimationDelegate>

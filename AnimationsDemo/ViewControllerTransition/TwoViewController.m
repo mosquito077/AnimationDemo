@@ -14,7 +14,7 @@ static CGFloat const kAddButtonWidthAndHeight = 60.f;
 static CGFloat const kCircleRadiusExpand = 100.f;
 
 @interface TwoViewController ()
-<UIViewControllerTransitioningDelegate, CircleSpreadTransitionDelegate, CAAnimationDelegate>
+<UIViewControllerTransitioningDelegate, CAAnimationDelegate, CircleSpreadTransitionDelegate>
 
 @property (nonatomic, strong) UIButton *numButton;
 @property (nonatomic, strong) UIButton *addButton;
@@ -107,21 +107,13 @@ static CGFloat const kCircleRadiusExpand = 100.f;
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
     PresentTransitionAnimator *dismissAnimator = [PresentTransitionAnimator transitionWithTransitionType:CircleSpreadTransitionTypeDismiss];
-    dismissAnimator.delegate = self;
     return dismissAnimator;
 }
 
 #pragma mark -- CircleSpreadTransitionDelegate
 
 - (void)presentAnimationDidStop {
-    [self.view setBackgroundColor:[UIColor whiteColor]];
     [self _animationWithButtons];
-}
-
-- (void)dismissAnimationDidStop {
-    if (self.delegate) {
-        [self.delegate changeViewBackgroundColor];
-    }
 }
 
 #pragma mark -- CAAnimationDelegate

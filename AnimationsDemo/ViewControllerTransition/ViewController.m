@@ -10,7 +10,7 @@
 #import "TwoViewController.h"
 #import "ProgressButton.h"
 
-@interface ViewController ()<ProgressAnimationDelegate, TransitionDelegate>
+@interface ViewController ()<ProgressAnimationDelegate>
 
 @property (weak, nonatomic) IBOutlet ProgressButton *signButton;
 @property (assign, nonatomic) CGFloat buttonWidth;
@@ -40,14 +40,7 @@
 
 - (void)animationDidStop {
     TwoViewController *vc= [[TwoViewController alloc] init];
-    vc.delegate = self;
     [self presentViewController:vc animated:YES completion:nil];
-}
-
-#pragma mark -- TransitionDelegate
-
-- (void)changeViewBackgroundColor {
-    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 #pragma mark -- Getter
