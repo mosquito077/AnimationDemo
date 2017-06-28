@@ -11,9 +11,8 @@
 #import "LabelLayer.h"
 #import "LoadingCircleLayer.h"
 
-@interface ProgressButton()<RectangleProtocol, LoadingCircleLayerProtocol, CAAnimationDelegate>
-
-@property (nonatomic, strong) NSTimer *timer;
+@interface ProgressButton()
+<RectangleProtocol, LoadingCircleLayerProtocol, CAAnimationDelegate>
 
 @property (nonatomic, strong) RectangleLayer *rectangleLayer;
 @property (nonatomic, strong) LabelLayer *labelLayer;
@@ -29,7 +28,16 @@
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super initWithCoder:aDecoder]) {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self initial];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
         [self initial];
     }
     return self;

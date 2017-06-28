@@ -23,9 +23,9 @@
 
 @property (nonatomic, weak) id<LoadingCircleLayerProtocol> loadingDelegate;
 
-- (instancetype)init;
-
 - (void)fillProperties:(CGRect)parentBounds circleRadius:(CGFloat)radius;
+
+- (instancetype)init;
 
 - (void)loadingAnimate;
 

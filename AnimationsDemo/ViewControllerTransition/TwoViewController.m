@@ -8,16 +8,13 @@
 
 #import "TwoViewController.h"
 #import "PresentTransitionAnimator.h"
-#import "Masonry.h"
-#import <pop/POP.h>
 
 static CGFloat const kNumButtonWidthAndHeight = 30.f;
 static CGFloat const kAddButtonWidthAndHeight = 60.f;
+static CGFloat const kCircleRadiusExpand = 100.f;
 
-#define kScreenWidth   [UIScreen mainScreen].bounds.size.width
-#define kScreenHeight  [UIScreen mainScreen].bounds.size.height
-
-@interface TwoViewController ()<UIViewControllerTransitioningDelegate, CircleSpreadTransitionDelegate, CAAnimationDelegate>
+@interface TwoViewController ()
+<UIViewControllerTransitioningDelegate, CircleSpreadTransitionDelegate, CAAnimationDelegate>
 
 @property (nonatomic, strong) UIButton *numButton;
 @property (nonatomic, strong) UIButton *addButton;
@@ -127,20 +124,22 @@ static CGFloat const kAddButtonWidthAndHeight = 60.f;
     }
 }
 
-#pragma mark -- caanimationdelegate
+#pragma mark -- CAAnimationDelegate
+
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     if (flag) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
-#pragma mark -- getter
+#pragma mark -- Getter
+
 - (CGRect)smallFrame {
     return CGRectMake((kScreenWidth-kAddButtonWidthAndHeight)/2, (kScreenHeight-kAddButtonWidthAndHeight)/2, kAddButtonWidthAndHeight, kAddButtonWidthAndHeight);
 }
 
 - (CGRect)expandFrame {
-    CGFloat radius = kScreenHeight+100;
+    CGFloat radius = kScreenHeight+kCircleRadiusExpand;
     return CGRectMake(self.view.center.x-radius/2, self.view.center.y-radius/2, radius, radius);
 }
 

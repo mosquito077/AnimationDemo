@@ -66,6 +66,8 @@
 		A2110A921EF7FBAB0073A0BD /* RectangleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RectangleLayer.m; sourceTree = "<group>"; };
 		A2110A961EF7FBBF0073A0BD /* ProgressButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressButton.h; sourceTree = "<group>"; };
 		A2110A971EF7FBBF0073A0BD /* ProgressButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressButton.m; sourceTree = "<group>"; };
+		A23A01D21F039E71008DB48C /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		A23A01D41F039F50008DB48C /* MMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMConstants.h; sourceTree = "<group>"; };
 		A28D461D1F03773900CA7A0F /* TwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoViewController.h; sourceTree = "<group>"; };
 		A28D461E1F03773900CA7A0F /* TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoViewController.m; sourceTree = "<group>"; };
 		A28D461F1F03773900CA7A0F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -143,11 +145,13 @@
 		A2110A571EF7FB4A0073A0BD /* AnimationsDemo */ = {
 			isa = PBXGroup;
 			children = (
+				A23A01D31F039ED6008DB48C /* Utils */,
 				A28D46111F03770B00CA7A0F /* ViewControllerTransition */,
 				A2110A8B1EF7FB930073A0BD /* Layers */,
 				A2110A8C1EF7FB930073A0BD /* ProgressButton */,
 				A2110A5B1EF7FB4A0073A0BD /* AppDelegate.h */,
 				A2110A5C1EF7FB4A0073A0BD /* AppDelegate.m */,
+				A23A01D21F039E71008DB48C /* PrefixHeader.pch */,
 				A2110A611EF7FB4A0073A0BD /* Main.storyboard */,
 				A2110A641EF7FB4A0073A0BD /* Assets.xcassets */,
 				A2110A661EF7FB4A0073A0BD /* LaunchScreen.storyboard */,
@@ -203,6 +207,14 @@
 				A2110A971EF7FBBF0073A0BD /* ProgressButton.m */,
 			);
 			path = ProgressButton;
+			sourceTree = "<group>";
+		};
+		A23A01D31F039ED6008DB48C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A23A01D41F039F50008DB48C /* MMConstants.h */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		A28D46111F03770B00CA7A0F /* ViewControllerTransition */ = {
@@ -562,6 +574,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WKQV5DN8XZ;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AnimationsDemo/PrefixHeader.pch;
 				INFOPLIST_FILE = AnimationsDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -579,6 +593,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WKQV5DN8XZ;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AnimationsDemo/PrefixHeader.pch;
 				INFOPLIST_FILE = AnimationsDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (

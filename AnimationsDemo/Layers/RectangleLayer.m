@@ -53,7 +53,7 @@
     [self addAnimation:animationRectangle forKey:nil];
 }
 
-#pragma mark -- getter
+#pragma mark -- Getter
 
 - (UIBezierPath *)roundedRectangle {
     if (!_roundedRectangle) {
@@ -69,7 +69,8 @@
     return _roundedSquare;
 }
 
-#pragma mark -- delegate
+#pragma mark -- CAAnimationDelegate
+
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     if (self.delegateAnimation
         && [self.delegateAnimation respondsToSelector:@selector(rectangleAnimationDidStop)]) {

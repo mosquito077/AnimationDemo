@@ -8,8 +8,6 @@
 
 #import "LoadingCircleLayer.h"
 
-static NSString *const kCircleTypeAnimationRotationGroup = @"kCircleTypeAnimationRotationGroup";
-
 @interface LoadingCircleLayer()<CAAnimationDelegate>
 
 @end
@@ -80,7 +78,7 @@ static NSString *const kCircleTypeAnimationRotationGroup = @"kCircleTypeAnimatio
     self.opacity = 0.0;
 }
 
-#pragma mark - Setters & Getters
+#pragma mark - Getters
 
 - (CGFloat)circleAnimationDuration {
     return 0.6f;
@@ -94,7 +92,8 @@ static NSString *const kCircleTypeAnimationRotationGroup = @"kCircleTypeAnimatio
     return _loadingPath;
 }
 
-#pragma mark -- delegate
+#pragma mark -- CAAnimationDelegate
+
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     if (self.loadingDelegate
         && [self.loadingDelegate respondsToSelector:@selector(loadingAnimationDidStop)]) {
