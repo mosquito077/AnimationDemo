@@ -19,6 +19,7 @@
 		A2110A931EF7FBAB0073A0BD /* LabelLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A2110A8E1EF7FBAB0073A0BD /* LabelLayer.m */; };
 		A2110A951EF7FBAB0073A0BD /* RectangleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A2110A921EF7FBAB0073A0BD /* RectangleLayer.m */; };
 		A2110A981EF7FBBF0073A0BD /* ProgressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A2110A971EF7FBBF0073A0BD /* ProgressButton.m */; };
+		A2886EDC1F43F538005879E1 /* pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A2886EDB1F43F538005879E1 /* pic.jpg */; };
 		A28D46221F03773900CA7A0F /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A28D461E1F03773900CA7A0F /* TwoViewController.m */; };
 		A28D46231F03773900CA7A0F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A28D46201F03773900CA7A0F /* ViewController.m */; };
 		A28D46261F03784800CA7A0F /* PresentTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = A28D46251F03784800CA7A0F /* PresentTransitionAnimator.m */; };
@@ -68,6 +69,7 @@
 		A2110A971EF7FBBF0073A0BD /* ProgressButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressButton.m; sourceTree = "<group>"; };
 		A23A01D21F039E71008DB48C /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		A23A01D41F039F50008DB48C /* MMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMConstants.h; sourceTree = "<group>"; };
+		A2886EDB1F43F538005879E1 /* pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic.jpg; sourceTree = "<group>"; };
 		A28D461D1F03773900CA7A0F /* TwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoViewController.h; sourceTree = "<group>"; };
 		A28D461E1F03773900CA7A0F /* TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoViewController.m; sourceTree = "<group>"; };
 		A28D461F1F03773900CA7A0F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		A2110A581EF7FB4A0073A0BD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A2886EDB1F43F538005879E1 /* pic.jpg */,
 				A2110A591EF7FB4A0073A0BD /* main.m */,
 			);
 			name = "Supporting Files";
@@ -340,6 +343,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2886EDC1F43F538005879E1 /* pic.jpg in Resources */,
 				A2110A681EF7FB4A0073A0BD /* LaunchScreen.storyboard in Resources */,
 				A2110A651EF7FB4A0073A0BD /* Assets.xcassets in Resources */,
 				A2110A631EF7FB4A0073A0BD /* Main.storyboard in Resources */,

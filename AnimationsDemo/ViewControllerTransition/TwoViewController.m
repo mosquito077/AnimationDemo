@@ -9,13 +9,14 @@
 #import "TwoViewController.h"
 #import "PresentTransitionAnimator.h"
 
-static CGFloat const kNumButtonWidthAndHeight = 30.f;
+static CGFloat const kNumButtonWidthAndHeight = 50.f;
 static CGFloat const kAddButtonWidthAndHeight = 60.f;
 static CGFloat const kCircleRadiusExpand = 100.f;
 
 @interface TwoViewController ()
 <UIViewControllerTransitioningDelegate, CircleSpreadTransitionDelegate>
 
+@property (nonatomic, strong) UIImageView *backImageView;
 @property (nonatomic, strong) UIButton *numButton;
 @property (nonatomic, strong) UIButton *addButton;
 
@@ -26,18 +27,25 @@ static CGFloat const kCircleRadiusExpand = 100.f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor whiteColor]];
     self.transitioningDelegate = self;
     
+    UIImage *picImage = [UIImage imageNamed:@"pic.jpg"];
+    self.backImageView = [[UIImageView alloc]initWithImage:picImage];
+    self.backImageView.frame = CGRectZero;
+    [self.view addSubview:self.backImageView];
+    [self.backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.top.trailing.bottom.equalTo(self.view);
+    }];
+    
     self.numButton = [[UIButton alloc] initWithFrame:CGRectZero];
-    [self.numButton setTitle:@"3" forState:UIControlStateNormal];
-    [self.numButton setBackgroundColor:[UIColor yellowColor]];
+    [self.numButton setBackgroundColor:[UIColor orangeColor]];
+    [self.numButton setTitle:@"^_^" forState:UIControlStateNormal];
     self.numButton.layer.cornerRadius = kNumButtonWidthAndHeight/2;
     self.numButton.alpha = 0.f;
     [self.view addSubview:self.numButton];
     [self.numButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(self.view).offset(100.f);
-        make.top.equalTo(self.view).offset(100.f);
+        make.trailing.equalTo(self.view).offset(-30.f);
+        make.top.equalTo(self.view).offset(80.f);
         make.width.height.mas_equalTo(kNumButtonWidthAndHeight);
     }];
     
