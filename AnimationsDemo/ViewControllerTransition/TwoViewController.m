@@ -60,7 +60,7 @@ static CGFloat const kCircleRadiusExpand = 100.f;
     [self.view addSubview:self.vButton];
     
     [self.vButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(self.view).offset(10.f);
+        make.leading.equalTo(self.view).offset(15.f);
         make.top.equalTo(self.view).offset(20.f);
         make.width.height.mas_equalTo(iconImage.size.height);
     }];
@@ -140,7 +140,12 @@ static CGFloat const kCircleRadiusExpand = 100.f;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.text = [_worksArr objectAtIndex:indexPath.row];
+        
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(10, 44.f, kScreenWidth, 0.8f)];
+        lineView.backgroundColor = [UIColor colorWithRed:224/255 green:224/255 blue:224/255 alpha:0.2];
+        [cell.contentView addSubview:lineView];
     }
     return cell;
 }
