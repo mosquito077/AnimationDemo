@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBTwitterScrollView.h"
 
 @interface TwoViewController : UIViewController
 
 @property (nonatomic, assign) CGRect smallFrame;
 @property (nonatomic, assign) CGRect expandFrame;
 
+@property (strong, nonatomic) MBTwitterScrollView *mTwitterScrollView;
+
 @end
+

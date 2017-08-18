@@ -9,16 +9,15 @@
 #import "TwoViewController.h"
 #import "PresentTransitionAnimator.h"
 
-static CGFloat const kNumButtonWidthAndHeight = 50.f;
 static CGFloat const kAddButtonWidthAndHeight = 60.f;
 static CGFloat const kCircleRadiusExpand = 100.f;
 
 @interface TwoViewController ()
-<UIViewControllerTransitioningDelegate, CircleSpreadTransitionDelegate>
+<UIViewControllerTransitioningDelegate, CircleSpreadTransitionDelegate, UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) UIImageView *backImageView;
-@property (nonatomic, strong) UIButton *numButton;
-@property (nonatomic, strong) UIButton *addButton;
+@property (nonatomic, copy) NSArray *worksArr;
+@property (nonatomic, strong) UIButton *vButton;
+@property (nonatomic, strong) UIButton *rotateButton;
 
 @end
 
@@ -27,36 +26,53 @@ static CGFloat const kCircleRadiusExpand = 100.f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _worksArr = @[@"帝高阳之苗裔兮", @"朕皇考曰伯庸",
+                  @"摄提贞于孟陬兮", @"惟庚寅吾以降",
+                  @"皇览揆余初度兮", @"肇锡余以嘉名",
+                  @"名余曰正则兮", @"字余曰灵均",
+                  @"纷吾既有此内美兮", @"又重之以修能",
+                  @"扈江离与辟芷兮", @"纫秋兰以为佩",
+                  @"汨余若将不及兮", @"恐年岁之不吾与"];
+    
     self.transitioningDelegate = self;
     
-    UIImage *picImage = [UIImage imageNamed:@"pic.jpg"];
-    self.backImageView = [[UIImageView alloc]initWithImage:picImage];
-    self.backImageView.frame = CGRectZero;
-    [self.view addSubview:self.backImageView];
-    [self.backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self initViews];
+
+}
+
+- (void)initViews {
+    
+    self.mTwitterScrollView = [[MBTwitterScrollView alloc] initScrollViewWithBackground:[UIImage imageNamed:@"mine_bg"] avatarImage:[UIImage imageNamed:@"moren_head"]];
+    self.mTwitterScrollView.mTableView.delegate = self;
+    self.mTwitterScrollView.mTableView.dataSource = self;
+    self.mTwitterScrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.mTwitterScrollView.mTableView.showsVerticalScrollIndicator = NO;
+    [self.view addSubview:self.mTwitterScrollView];
+    [self.mTwitterScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.top.trailing.bottom.equalTo(self.view);
     }];
     
-    self.numButton = [[UIButton alloc] initWithFrame:CGRectZero];
-    [self.numButton setBackgroundColor:[UIColor orangeColor]];
-    [self.numButton setTitle:@"^_^" forState:UIControlStateNormal];
-    self.numButton.layer.cornerRadius = kNumButtonWidthAndHeight/2;
-    self.numButton.alpha = 0.f;
-    [self.view addSubview:self.numButton];
-    [self.numButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.trailing.equalTo(self.view).offset(-30.f);
-        make.top.equalTo(self.view).offset(80.f);
-        make.width.height.mas_equalTo(kNumButtonWidthAndHeight);
+    self.vButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    UIImage *iconImage = [UIImage imageNamed:@"mine_note_icon"];
+    [self.vButton setImage:iconImage forState:UIControlStateNormal];
+    self.vButton.layer.cornerRadius = iconImage.size.height/2;
+    self.vButton.alpha = 0.f;
+    [self.view addSubview:self.vButton];
+    
+    [self.vButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(self.view).offset(10.f);
+        make.top.equalTo(self.view).offset(20.f);
+        make.width.height.mas_equalTo(iconImage.size.height);
     }];
     
-    self.addButton = [[UIButton alloc] initWithFrame:CGRectZero];
-    [self.addButton setBackgroundColor: [UIColor redColor]];
-    [self.addButton setTitle:@"＋" forState:UIControlStateNormal];
-    self.addButton.layer.cornerRadius = kAddButtonWidthAndHeight/2;
-    self.addButton.alpha = 0.f;
-    [self.addButton addTarget:self action:@selector(animationStart) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.addButton];
-    [self.addButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.rotateButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    [self.rotateButton setBackgroundColor: [UIColor orangeColor]];
+    [self.rotateButton setTitle:@"＋" forState:UIControlStateNormal];
+    self.rotateButton.layer.cornerRadius = kAddButtonWidthAndHeight/2;
+    self.rotateButton.alpha = 0.f;
+    [self.rotateButton addTarget:self action:@selector(animationStart) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.rotateButton];
+    [self.rotateButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.equalTo(self.view).offset(-30.f);
         make.bottom.equalTo(self.view).offset(-50.f);
         make.width.height.mas_equalTo(kAddButtonWidthAndHeight);
@@ -65,11 +81,11 @@ static CGFloat const kCircleRadiusExpand = 100.f;
 
 - (void)animationStart {
     POPBasicAnimation *centerAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewCenter];
-    centerAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.addButton.center.x, self.addButton.center.y)];
+    centerAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.rotateButton.center.x, self.rotateButton.center.y)];
     centerAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(self.view.center.x, self.view.center.y)];
     centerAnimation.duration = 0.4;
     centerAnimation.removedOnCompletion = NO;
-    [self.addButton pop_addAnimation:centerAnimation forKey:@"centerAnimation"];
+    [self.rotateButton pop_addAnimation:centerAnimation forKey:@"centerAnimation"];
     
     centerAnimation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -81,14 +97,14 @@ static CGFloat const kCircleRadiusExpand = 100.f;
     alphaAnimation.beginTime = 0.4;
     alphaAnimation.duration = 0.4;
     alphaAnimation.toValue = @1.0;
-    [self.addButton pop_addAnimation:alphaAnimation forKey:@"alpha"];
+    [self.rotateButton pop_addAnimation:alphaAnimation forKey:@"alpha"];
     
     POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
     scaleAnimation.beginTime = 0.4;
     scaleAnimation.springBounciness = 10.f;
     scaleAnimation.fromValue = [NSValue valueWithCGSize:CGSizeZero];
     scaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.f, 1.f)];
-    [self.addButton pop_addAnimation:scaleAnimation forKey:@"scalingXY"];
+    [self.rotateButton pop_addAnimation:scaleAnimation forKey:@"scalingXY"];
     
     scaleAnimation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
         if (finished) {
@@ -96,15 +112,37 @@ static CGFloat const kCircleRadiusExpand = 100.f;
             alphaAnimation.beginTime = 0.4;
             alphaAnimation.duration = 0.4;
             alphaAnimation.toValue = @1.0;
-            [self.numButton pop_addAnimation:alphaAnimation forKey:@"alpha"];
+            [self.vButton pop_addAnimation:alphaAnimation forKey:@"alpha"];
             
             POPBasicAnimation *scaleXYAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewScaleXY];
             scaleXYAnimation.duration = 0.4;
             scaleXYAnimation.fromValue = [NSValue valueWithCGSize:CGSizeZero];
             scaleXYAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.f, 1.f)];
-            [self.numButton pop_addAnimation:scaleXYAnimation forKey:@"scalingXY"];
+            [self.vButton pop_addAnimation:scaleXYAnimation forKey:@"scalingXY"];
         }
     };
+}
+
+
+#pragma mark - uitableview delegate & datasource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [_worksArr count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44.f;
+}
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.textLabel.text = [_worksArr objectAtIndex:indexPath.row];
+    }
+    return cell;
 }
 
 #pragma mark -- UIViewControllerTransitioningDelegate

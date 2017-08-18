@@ -19,7 +19,9 @@
 		A2110A931EF7FBAB0073A0BD /* LabelLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A2110A8E1EF7FBAB0073A0BD /* LabelLayer.m */; };
 		A2110A951EF7FBAB0073A0BD /* RectangleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A2110A921EF7FBAB0073A0BD /* RectangleLayer.m */; };
 		A2110A981EF7FBBF0073A0BD /* ProgressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A2110A971EF7FBBF0073A0BD /* ProgressButton.m */; };
-		A2886EDC1F43F538005879E1 /* pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A2886EDB1F43F538005879E1 /* pic.jpg */; };
+		A224B37F1F456EE900791E30 /* UIScrollView+TwitterCover.m in Sources */ = {isa = PBXBuildFile; fileRef = A224B37E1F456EE900791E30 /* UIScrollView+TwitterCover.m */; };
+		A224B3821F45814200791E30 /* MBTwitterScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A224B3811F45814200791E30 /* MBTwitterScrollView.m */; };
+		A225D7951F46883500FABF68 /* NSString+YOHO.m in Sources */ = {isa = PBXBuildFile; fileRef = A225D7941F46883500FABF68 /* NSString+YOHO.m */; };
 		A28D46221F03773900CA7A0F /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A28D461E1F03773900CA7A0F /* TwoViewController.m */; };
 		A28D46231F03773900CA7A0F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A28D46201F03773900CA7A0F /* ViewController.m */; };
 		A28D46261F03784800CA7A0F /* PresentTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = A28D46251F03784800CA7A0F /* PresentTransitionAnimator.m */; };
@@ -67,9 +69,14 @@
 		A2110A921EF7FBAB0073A0BD /* RectangleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RectangleLayer.m; sourceTree = "<group>"; };
 		A2110A961EF7FBBF0073A0BD /* ProgressButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressButton.h; sourceTree = "<group>"; };
 		A2110A971EF7FBBF0073A0BD /* ProgressButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressButton.m; sourceTree = "<group>"; };
+		A224B37D1F456EE900791E30 /* UIScrollView+TwitterCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TwitterCover.h"; sourceTree = "<group>"; };
+		A224B37E1F456EE900791E30 /* UIScrollView+TwitterCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TwitterCover.m"; sourceTree = "<group>"; };
+		A224B3801F45814200791E30 /* MBTwitterScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBTwitterScrollView.h; sourceTree = "<group>"; };
+		A224B3811F45814200791E30 /* MBTwitterScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBTwitterScrollView.m; sourceTree = "<group>"; };
+		A225D7931F46883500FABF68 /* NSString+YOHO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+YOHO.h"; sourceTree = "<group>"; };
+		A225D7941F46883500FABF68 /* NSString+YOHO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YOHO.m"; sourceTree = "<group>"; };
 		A23A01D21F039E71008DB48C /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		A23A01D41F039F50008DB48C /* MMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMConstants.h; sourceTree = "<group>"; };
-		A2886EDB1F43F538005879E1 /* pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pic.jpg; sourceTree = "<group>"; };
 		A28D461D1F03773900CA7A0F /* TwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoViewController.h; sourceTree = "<group>"; };
 		A28D461E1F03773900CA7A0F /* TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoViewController.m; sourceTree = "<group>"; };
 		A28D461F1F03773900CA7A0F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -147,6 +154,7 @@
 		A2110A571EF7FB4A0073A0BD /* AnimationsDemo */ = {
 			isa = PBXGroup;
 			children = (
+				A224B37C1F456EC300791E30 /* MBTwitterScroll */,
 				A23A01D31F039ED6008DB48C /* Utils */,
 				A28D46111F03770B00CA7A0F /* ViewControllerTransition */,
 				A2110A8B1EF7FB930073A0BD /* Layers */,
@@ -166,7 +174,6 @@
 		A2110A581EF7FB4A0073A0BD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A2886EDB1F43F538005879E1 /* pic.jpg */,
 				A2110A591EF7FB4A0073A0BD /* main.m */,
 			);
 			name = "Supporting Files";
@@ -212,10 +219,23 @@
 			path = ProgressButton;
 			sourceTree = "<group>";
 		};
+		A224B37C1F456EC300791E30 /* MBTwitterScroll */ = {
+			isa = PBXGroup;
+			children = (
+				A224B37D1F456EE900791E30 /* UIScrollView+TwitterCover.h */,
+				A224B37E1F456EE900791E30 /* UIScrollView+TwitterCover.m */,
+				A224B3801F45814200791E30 /* MBTwitterScrollView.h */,
+				A224B3811F45814200791E30 /* MBTwitterScrollView.m */,
+			);
+			path = MBTwitterScroll;
+			sourceTree = "<group>";
+		};
 		A23A01D31F039ED6008DB48C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				A23A01D41F039F50008DB48C /* MMConstants.h */,
+				A225D7931F46883500FABF68 /* NSString+YOHO.h */,
+				A225D7941F46883500FABF68 /* NSString+YOHO.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -343,7 +363,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2886EDC1F43F538005879E1 /* pic.jpg in Resources */,
 				A2110A681EF7FB4A0073A0BD /* LaunchScreen.storyboard in Resources */,
 				A2110A651EF7FB4A0073A0BD /* Assets.xcassets in Resources */,
 				A2110A631EF7FB4A0073A0BD /* Main.storyboard in Resources */,
@@ -423,11 +442,14 @@
 				A28D46231F03773900CA7A0F /* ViewController.m in Sources */,
 				A2110A931EF7FBAB0073A0BD /* LabelLayer.m in Sources */,
 				A2110A951EF7FBAB0073A0BD /* RectangleLayer.m in Sources */,
+				A225D7951F46883500FABF68 /* NSString+YOHO.m in Sources */,
 				A2110A981EF7FBBF0073A0BD /* ProgressButton.m in Sources */,
 				A2110A5D1EF7FB4A0073A0BD /* AppDelegate.m in Sources */,
 				A20663721EFAB62800EEA337 /* LoadingCircleLayer.m in Sources */,
 				A2110A5A1EF7FB4A0073A0BD /* main.m in Sources */,
 				A28D46221F03773900CA7A0F /* TwoViewController.m in Sources */,
+				A224B37F1F456EE900791E30 /* UIScrollView+TwitterCover.m in Sources */,
+				A224B3821F45814200791E30 /* MBTwitterScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
